@@ -1,0 +1,5 @@
+<button on-click="done" class="btn btn-default" style="background-color: white"><i class="glyphicon glyphicon-chevron-left"></i></button>
+<h3>{{servers[selectedBox].host}}</h3>
+<h4>{{servers[selectedBox].ip}}</h4>
+
+<button class="btn btn-warning btn-lg" on-click="reboot:{{selectedBox}}">Reboot</button> <button class="btn btn-danger btn-lg" on-click="delete:{{selectedBox}}">Delete</button>

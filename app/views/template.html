@@ -1,0 +1,19 @@
+<div style="margin-top: 15px;margin-bottom: 15px">
+    <span style="font-size:30px">UbuntoCloud</span>
+    {{#if state=="main"}}
+        <a class="pull-right btn btn-large btn-success" href="#!" on-click="createServer">Create Server</a>
+    {{/if}}
+</div>
+<br>
+
+{{#if state=="main"}}
+<serverlist></serverlist>
+{{/if}}
+
+{{#if state=="createServer"}}
+<createserver></createserver>
+{{/if}}
+
+{{#if state=="manageServer"}}
+<manageserver></manageserver>
+{{/if}}

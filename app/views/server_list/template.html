@@ -1,0 +1,20 @@
+{{#if servers.length==0}}
+You don't have any servers!
+{{else}}
+<table class="table">
+    <thead>
+    <tr>
+        <th>Host</th>
+        <th>IP</th>
+    </tr>
+    </thead>
+    <tbody>
+        {{#servers:i}}
+            <tr>
+                <td><a href="#" on-click="selectBox:{{i}}">{{host}}</a></td>
+                <td>{{ip}}</td>
+            </tr>
+        {{/servers}}
+    </tbody>
+</table>
+{{/if}}

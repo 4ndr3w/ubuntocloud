@@ -19,7 +19,7 @@ module.exports = {
                     {
                         stream.on("close", function(code,sig)
                         {
-                            conn.exec("lxc-start -n "+server.host, function(err,stream)
+                            conn.exec("lxc-start -d -n "+server.host, function(err,stream)
                             {
                                 stream.on("close", function(code,sig)
                                 {
@@ -81,7 +81,7 @@ module.exports = {
             {
                 stream.on("close", function(code, sig)
                 {
-                    conn.exec("lxc-start -n "+server.host, function(err,stream)
+                    conn.exec("lxc-start -d -n "+server.host, function(err,stream)
                     {
                         stream.on("close", function(code,sig)
                         {

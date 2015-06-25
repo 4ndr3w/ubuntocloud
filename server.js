@@ -66,7 +66,7 @@ app.post("/servers", function(req,res)
         res.sendStatus(404);
         return;
     }
-    redisConn.lpop("ipPool", function(err, ip)
+    redisConn.rpop("ipPool", function(err, ip)
     {
         if ( err || !ip )
             res.sendStatus(500);
@@ -159,7 +159,7 @@ app.delete("/servers/:id", function(req,res)
                 lxc.deleteVM(server, function(err)
                 {
                     if ( !err ) {
-                        redisConn.lpush("ipPool", server.ip, function(err) {});
+                        redisConn.rpush("ipPool", server.ip, function(err) {});
                         res.sendStatus(200);
                     }
                     else

@@ -94,9 +94,17 @@ app.post("/servers", function(req,res)
                         lxc.createVM(newServer, function(err)
                         {
                             if ( err )
+                            {
+                                redisConn.lpush("ipPool", ip, function(err){
+                                  newServer.destroy(function(e){});
+                                });
                                 res.sendStatus(500);
+                            }
                             else
+                            {
+                                httpconfig.createVhost(newServer.host, ip);
                                 res.json(newServer);
+                            }
                         });
                     }
                 });
@@ -159,6 +167,7 @@ app.delete("/servers/:id", function(req,res)
                 lxc.deleteVM(server, function(err)
                 {
                     if ( !err ) {
+                        httpconfig.removeVhost(server.host);
                         redisConn.rpush("ipPool", server.ip, function(err) {});
                         res.sendStatus(200);
                     }

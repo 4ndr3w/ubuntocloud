@@ -5,7 +5,8 @@ var express = require("express"),
     redisConn = redis.createClient(),
     async = require("async"),
     lxc = require("./lxc"),
-    ActiveDirectory = require("activedirectory");
+    ActiveDirectory = require("activedirectory"),
+    httpconfig = require("./httpconfig");
 
 var ad=require("activedirectory")({url:"ldap://172.16.1.3", baseDN: 'dc=ubunto, dc=me'});
 
